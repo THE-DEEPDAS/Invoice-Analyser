@@ -33,6 +33,10 @@ def create_gauge_chart(score):
 def main():
     st.title("Invoice Fraud Detection System")
     
+    # Ensure invoices directory exists
+    if not os.path.exists("invoices"):
+        os.makedirs("invoices", exist_ok=True)
+        
     try:
         # Initialize detector
         detector = InvoiceFraudDetector()

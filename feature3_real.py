@@ -166,6 +166,10 @@ class InvoiceFraudDetector:
 
     def analyze_invoices(self, invoice_directory):
         """Analyze a batch of invoices and return risk assessments."""
+        if not os.path.exists(invoice_directory):
+            os.makedirs(invoice_directory, exist_ok=True)
+            return []  # Return empty results if directory was just created
+        
         results = []
 
         for filename in os.listdir(invoice_directory):
