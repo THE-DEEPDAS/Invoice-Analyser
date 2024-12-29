@@ -1,4 +1,7 @@
 import streamlit as st
+# Set page config first, before any other Streamlit commands
+st.set_page_config(page_title="Invoice Analyser", page_icon="📊", layout="wide")
+
 import os
 from pathlib import Path
 import subprocess
@@ -45,11 +48,8 @@ def install_system_dependencies():
         st.error(f"Error installing system dependencies: {e}")
 
 def main():
-    install_system_dependencies()  # Add this line
+    install_system_dependencies()
     install_tesseract()
-    
-    # Add disclaimer and header
-    st.set_page_config(page_title="Invoice Analyser", page_icon="📊", layout="wide")
     
     # Sidebar with disclaimer
     with st.sidebar:
