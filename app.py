@@ -33,6 +33,14 @@ def create_gauge_chart(score):
 def main():
     st.title("Invoice Fraud Detection System")
     
+    try:
+        # Initialize detector
+        detector = InvoiceFraudDetector()
+    except Exception as e:
+        st.error(f"Error initializing the system: {str(e)}")
+        st.info("Try running 'python -m spacy download en_core_web_sm' in your terminal")
+        return
+    
     # Enhanced upload section
     st.write("### Upload Invoices for Analysis")
     st.markdown("""
@@ -41,9 +49,6 @@ def main():
     - Maximum file size: 200MB per file
     - Files are processed securely and not stored permanently
     """)
-
-    # Initialize detector
-    detector = InvoiceFraudDetector()
 
     # File upload with better error handling
     uploaded_files = st.file_uploader("Drop your PDF invoices here", type="pdf", accept_multiple_files=True)

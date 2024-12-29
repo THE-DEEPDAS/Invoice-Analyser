@@ -7,6 +7,7 @@ import re
 from datetime import datetime
 import spacy
 import os
+import subprocess
 
 class InvoiceFraudDetector:
     def __init__(self):  # Fixed method name from init to __init__
@@ -14,9 +15,9 @@ class InvoiceFraudDetector:
             # Load SpaCy model for NLP tasks
             self.nlp = spacy.load('en_core_web_sm')
         except OSError:
-            print("SpaCy model 'en_core_web_sm' not found. Please install it using:")
-            print("python -m spacy download en_core_web_sm")
-            raise
+            print("Downloading SpaCy model 'en_core_web_sm'...")
+            subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"], check=True)
+            self.nlp = spacy.load('en_core_web_sm')
         # Initialize TF-IDF vectorizer for text analysis
         self.vectorizer = TfidfVectorizer(max_features=100)
         # Initialize anomaly detector
