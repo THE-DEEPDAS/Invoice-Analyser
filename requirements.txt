@@ -1,0 +1,9 @@
+streamlit
+pytesseract
+pdf2image
+numpy
+opencv-python
+pandas
+Pillow
+PyPDF2
+python-dateutil
