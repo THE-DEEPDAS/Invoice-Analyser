@@ -5,24 +5,36 @@ from sklearn.ensemble import IsolationForest
 import PyPDF2  # Replace pytesseract and pdf2image
 import re
 from datetime import datetime
-import spacy
 import os
 import subprocess
+import sys
+
+# Modified spaCy import with fallback
+try:
+    import spacy
+    import en_core_web_sm
+    HAS_SPACY = True
+except ImportError:
+    HAS_SPACY = False
+    print("Warning: spaCy or English model not available, using simplified text processing")
 
 class InvoiceFraudDetector:
     def __init__(self):  # Fixed method name from init to __init__
         try:
-            # Load SpaCy model for NLP tasks
-            self.nlp = spacy.load('en_core_web_sm')
-        except OSError:
-            print("Downloading SpaCy model 'en_core_web_sm'...")
-            subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"], check=True)
-            self.nlp = spacy.load('en_core_web_sm')
-        # Initialize TF-IDF vectorizer for text analysis
+            if HAS_SPACY:
+                self.nlp = en_core_web_sm.load()
+            else:
+                # Simple fallback for text processing
+                from collections import Counter
+                self.nlp = lambda x: Counter(x.split())
+        except Exception as e:
+            print(f"Warning: Using simplified text processing due to: {str(e)}")
+            from collections import Counter
+            self.nlp = lambda x: Counter(x.split())
+        
+        # Rest of initialization
         self.vectorizer = TfidfVectorizer(max_features=100)
-        # Initialize anomaly detector
         self.isolation_forest = IsolationForest(contamination=0.1, random_state=42)
-        # Historical data patterns (would be loaded from database in production)
         self.historical_patterns = {
             'avg_amount': 5000,
             'std_amount': 2000,

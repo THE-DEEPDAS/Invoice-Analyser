@@ -13,7 +13,7 @@ Risk Factors:
 Details:
   Amount: $919.00
   Date: Not found
-  Supplier: Date & Time
+  Supplier: Security Check
 
 ------------------------------
 File: invoice_1.pdf
@@ -28,7 +28,7 @@ Risk Factors:
 Details:
   Amount: $123.00
   Date: 2024-12-28 00:00:00
-  Supplier: Tech Corp
+  Supplier: BC
 
 ------------------------------
 File: invoice_10.pdf
@@ -58,7 +58,7 @@ Risk Factors:
 Details:
   Amount: $123.00
   Date: 2024-12-28 00:00:00
-  Supplier: Tech Corp
+  Supplier: BC
 
 ------------------------------
 File: invoice_4.pdf
@@ -88,7 +88,7 @@ Risk Factors:
 Details:
   Amount: $123.00
   Date: 2024-12-28 00:00:00
-  Supplier: Tech Corp
+  Supplier: BC
 
 ------------------------------
 File: invoice_6.pdf
@@ -118,7 +118,7 @@ Risk Factors:
 Details:
   Amount: $123.00
   Date: 2024-12-28 00:00:00
-  Supplier: Tech Corp
+  Supplier: BC
 
 ------------------------------
 File: invoice_8.pdf
@@ -148,7 +148,6 @@ Risk Factors:
 Details:
   Amount: $123.00
   Date: 2024-12-28 00:00:00
-  Supplier: Business St.
-Business City
+  Supplier: Equipment Co.
 
 ------------------------------
