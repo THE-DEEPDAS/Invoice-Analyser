@@ -5,7 +5,12 @@ from feature3_real import InvoiceFraudDetector
 import plotly.graph_objects as go
 import pandas as pd
 
-st.set_page_config(page_title="Invoice Fraud Detection System", layout="wide")
+st.set_page_config(
+    page_title="Invoice Fraud Detection",
+    page_icon="🔍",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 def create_gauge_chart(score):
     """Create a gauge chart for risk score visualization"""
@@ -30,6 +35,10 @@ def create_gauge_chart(score):
     ))
     return fig
 
+@st.cache_resource
+def get_detector():
+    return InvoiceFraudDetector()
+
 def main():
     st.title("Invoice Fraud Detection System")
     
@@ -38,8 +47,8 @@ def main():
         os.makedirs("invoices", exist_ok=True)
         
     try:
-        # Initialize detector
-        detector = InvoiceFraudDetector()
+        # Use cached detector
+        detector = get_detector()
     except Exception as e:
         st.error(f"Error initializing the system: {str(e)}")
         st.info("Try running 'python -m spacy download en_core_web_sm' in your terminal")
