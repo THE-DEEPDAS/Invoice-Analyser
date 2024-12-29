@@ -2,7 +2,7 @@ streamlit
 pytesseract
 pdf2image
 numpy
-opencv-python
+opencv-python-headless
 pandas
 Pillow
 PyPDF2

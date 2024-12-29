@@ -1,10 +1,20 @@
 import streamlit as st
 import os
 from pathlib import Path
-from model import SimpleInvoiceFraudDetector
 import subprocess
 import sys
-import cv2
+
+# Handle imports with error messages
+try:
+    import cv2
+except ImportError:
+    st.error("Error loading OpenCV. Please check system dependencies.")
+    
+try:
+    from model import SimpleInvoiceFraudDetector
+except ImportError as e:
+    st.error(f"Error loading model: {str(e)}")
+
 import numpy as np
 import pandas as pd
 from PIL import Image
@@ -21,7 +31,21 @@ def install_tesseract():
     except Exception as e:
         st.error(f"Error installing Tesseract: {e}")
 
+def install_system_dependencies():
+    """Install required system packages"""
+    try:
+        if sys.platform.startswith('linux'):
+            subprocess.run(['apt-get', 'update'], check=True)
+            subprocess.run(['apt-get', 'install', '-y', 
+                          'python3-opencv', 
+                          'tesseract-ocr',
+                          'libgl1',
+                          'poppler-utils'], check=True)
+    except Exception as e:
+        st.error(f"Error installing system dependencies: {e}")
+
 def main():
+    install_system_dependencies()  # Add this line
     install_tesseract()
     
     # Add disclaimer and header

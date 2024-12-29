@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+temp_upload/
+.env
+*.db
+invoice_statistics.json
