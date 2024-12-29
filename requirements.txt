@@ -2,7 +2,9 @@ streamlit>=1.24.0
 pandas>=1.5.0
 numpy>=1.21.0
 scikit-learn>=1.0.0
-spacy>=3.5.0
+# In requirements.txt
+spacy>=3.0.0
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.0/en_core_web_sm-3.7.0.tar.gz
 PyPDF2>=3.0.0
 plotly>=5.13.0
 # Add these for deployment
