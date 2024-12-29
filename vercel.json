@@ -1,0 +1,7 @@
+{
+    "version": 2,
+    "buildCommand": "pip install -r requirements.txt && python -m spacy download en_core_web_sm",
+    "outputDirectory": ".",
+    "framework": "other",
+    "installCommand": "pip install -r requirements"
+}
