@@ -1,0 +1,16 @@
+{
+    "total_processed": 76,
+    "total_flagged": 33,
+    "monthly_stats": {
+        "2024-12": {
+            "processed": 76,
+            "flagged": 33,
+            "total_amount": 2704694.01
+        }
+    },
+    "amount_ranges": {
+        "low": 0,
+        "medium": 0,
+        "high": 0
+    }
+}

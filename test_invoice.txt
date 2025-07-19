@@ -1,0 +1,18 @@
+INVOICE
+
+Invoice #: 12345
+Date: 01/15/2024
+
+From: ABC Company Ltd.
+To: XYZ Corporation
+
+Description:
+- Consulting Services: $5,000
+- Equipment: $2,500
+- Materials: $1,500
+
+Subtotal: $9,000
+Tax (10%): $900
+Total Amount Due: $9,900
+
+Due Date: 02/15/2024
